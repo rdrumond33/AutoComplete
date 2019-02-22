@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Auto Complete</title>
+</head>
+<body>
+    <form autocomplete="off" action="/api" method="POST">
+        <label for="event" >Eventos:</label>
+        <input type="search" name="event" id="searchEvent" list="events" placeholder="Digite aqui">
+        <datalist id="events" ></datalist>
+    <button type="submit">Enviar</button>
+</form>
+<script src="main.js"></script>
+</body>
+</html>
