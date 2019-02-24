@@ -6,7 +6,8 @@ const AutoComplete = function () {
         limparOption()
         if (this.value.length>=2) {
             getEvents(this.value).then(responses=>{
-                if (responses.arrayBusca.length!==0) {              
+                if (responses.arrayBusca.length!==0) {  
+                    /** Crias os options com os valores passados pela api */            
                     for (const event of responses.arrayBusca) {
                        const Option = document.createElement('OPTION')
                        Option.setAttribute('value',event)
@@ -36,10 +37,12 @@ let Child = getDataList().firstChild;
     console.log(getDataList().childNodes);
     
 }
-/** Faz uma requisição ajax com retorno dos eventos */
+/** Faz uma requisição ajax com retorno dos eventos 
+ * ja formatados em um json contendo um array com  todos o eventos  
+*/
 const getEvents= async function (param){
     try {
-         const response =  await fetch(`http://localhost:8080/api/${param}`);
+         const response =  await fetch(`/api/${param}`);
         const json = await response.json()
         return json;
 
