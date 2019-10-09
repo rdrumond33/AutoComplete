@@ -1,10 +1,10 @@
 const Mongoose = require('mongoose');
 
-const uri = 'mongodb://localhost:27017/Event';
+const uri = 'mongodb://mongo:27017/Event';
 
 Mongoose.Promise = global.Promise;
-Mongoose.connect(uri,{useNewUrlParser: true}).then(()=>{
-        console.log('connegting mongodb');
-    }).catch((erro)=>console.error('erro ao conectar banco'))
+Mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true }).then(() => {
+    console.log('connegting mongodb');
+}).catch((erro) => console.error('erro ao conectar banco: ' + erro))
 
-module.exports =  Mongoose
+module.exports = Mongoose
