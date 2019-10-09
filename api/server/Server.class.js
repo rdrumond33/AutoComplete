@@ -1,30 +1,30 @@
 const Express = require('express');
-const BodyParser =require('body-parser');
 const path = require('path')
 
-const RouterEvent =require('../controller/event.Controller');
+const RouterEvent = require('../controller/event.Controller');
 
-class Server{
-    constructor(){
+class Server {
+    constructor() {
         this.app = Express()
     }
-    configiServer(port){
-        this.app.use(BodyParser.urlencoded({extended:true}))
-        this.app.use(BodyParser.json())
+    configiServer(port) {
+        this.app.use(Express.urlencoded({ extended: true }))
+        this.app.use(Express.json())
         this.app.use(Express.static(path.join(__dirname, "../../public")));
-        
-        this.app.get('/',(req,res)=>{
+
+        this.app.get('/', (req, res) => {
             res.render('/public/index.html')
         })
         /**Routes */
-        this.app.use('/api',RouterEvent)
+        this.app.use('/api', RouterEvent)
 
-        this.app.listen(port,()=>{console.log(`Listen port ${port}`);
+        this.app.listen(port, () => {
+            console.log(`Listen port ${port}`);
         })
     }
 
 
-    start(port){this.configiServer(port)}
+    start(port) { this.configiServer(port) }
 }
 
 module.exports = Server
