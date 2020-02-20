@@ -4,16 +4,16 @@ services:
     build: .
     restart: always
     networks:
-       - overlay
+       - api
     ports:
       - "3000:3000"
     depends_on: 
       - mongo
   mongo:
-    image: mongo
+    image: mongo:3.6-xenial 
     restart: always
     networks:
-       - overlay
+       - api
 
 networks:
-  overlay:
+  api:
